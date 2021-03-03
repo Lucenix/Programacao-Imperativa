@@ -1,11 +1,10 @@
 #include <stdio.h>
 void triangulo (int n);
 
+void quadroDim(int d);
+
 main () 
 {
-    triangulo(5);
-    return 0;
-    
     /*1.1
     int x, y;
     x = 3; y = x+1;
@@ -94,6 +93,9 @@ main ()
     1111"
 
     */
+
+    quadroDim(5);
+    return 0;
 }
 
 void quatroUm (int x) {
@@ -107,17 +109,58 @@ void quatroUm (int x) {
 
 void quatroDois (int x) {
     for (int i = 0; i<x; i++) {
-        if (i%2==0) {
-            for (int j = 0; j<x; j++) {
-                if (j%2 == 0) putchar('#');
-                else putchar('_');
-            }
-        } else {
-            for (int j = 0; j<x; j++) {
-                if (j%2 == 0) putchar('_');
-                else putchar('#');
-            }
+        for (int j = 0; j<x; j++) {
+            if (((i+j)%2) == 0)
+                putchar('#');
+            else 
+                putchar('_');
+        }
+        
+        putchar('\n');
+    }
+}
+
+int checkCirculo(int i, int j, int r);
+
+void quatroQuatro (int r) {
+    int conta=0;
+    for (int i = 0; i < 2*r+1; i++) {
+        for (int j = 0; j < 2*r+1; j++) {
+            if (checkCirculo(i, j, r))
+                if (j < r) {
+                    putchar('(');
+                    conta++;
+                } else if (j == r) {
+                    putchar('|');
+                    conta++; 
+                } else {
+                    putchar(')');
+                    conta++; }
+            else
+                putchar(' ');
         }
         putchar('\n');
     }
+    
+        printf("%d", conta);
+        putchar('\n');
+}
+
+void quadroDim (int d) {
+    for (int i = 1; i<=d; i++) {
+        for (int j = 1; j<=d; j++) {
+            if (j == 1 || i == 1 || j == d || i == d)
+                putchar('#');
+            else
+                putchar(' ');
+        }
+        putchar('\n');
+    }
+}
+
+int checkCirculo (int i, int j, int r) {
+    if ((i-r)*(i-r) + (j-r)*(j-r) <= r*r)
+        return 1;
+    else
+        return 0;
 }
