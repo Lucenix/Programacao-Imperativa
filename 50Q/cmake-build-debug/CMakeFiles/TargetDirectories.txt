@@ -1,0 +1,3 @@
+D:/Code/Universidade/Programacao Imperativa (C)/50Q/cmake-build-debug/CMakeFiles/50Q.dir
+D:/Code/Universidade/Programacao Imperativa (C)/50Q/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Code/Universidade/Programacao Imperativa (C)/50Q/cmake-build-debug/CMakeFiles/rebuild_cache.dir
