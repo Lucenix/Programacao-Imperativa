@@ -15,6 +15,8 @@ int main() {
 
     b = a;
 
+    b = a + 3; //aritmética de endereços -> salta 3 para a frente
+
     s = sum (b,10);
 
     printf("%d\n", *a);
