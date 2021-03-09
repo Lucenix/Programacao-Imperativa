@@ -12,15 +12,19 @@ int main() {
     int s;
 
     int *b;
+    long int *c;
 
-    b = a;
-
+    b = a; //a operação inversa não é possível
     b = a + 3; //aritmética de endereços -> salta 3 para a frente
+
+    c = a;
+    c = a + 3;
 
     s = sum (b,10);
 
     printf("%d\n", *a);
     printf("%d\n", *b);
+    printf("%d\n", *c);
     printf("%d",s);
 
     return 0;
