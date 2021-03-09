@@ -52,7 +52,11 @@ Mkfile.old
 dkms.conf
 *.xml
 *.iml
-Aulas/cmake-build-debug/
+
+# CLion Stuff
+/.idea/
+/cmake-build-debug/
+/CMakeLists.txt
 
 # Default ignored files
 /shelf/
