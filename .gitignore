@@ -55,7 +55,7 @@ dkms.conf
 
 # CLion Stuff
 .idea
-cmake-build-debug
+cmake-build-*/
 CMakeLists.txt
 
 # Default ignored files
