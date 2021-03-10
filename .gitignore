@@ -56,7 +56,7 @@ dkms.conf
 # CLion Stuff
 .idea
 cmake-build-*/
-CMakeLists.txt
+/CMakeLists.txt
 
 # Default ignored files
 /shelf/
