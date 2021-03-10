@@ -15,10 +15,10 @@ int main() {
     long int *c;
 
     b = a; //a operação inversa não é possível
-    b = a + 3; //aritmética de endereços -> salta 3 para a frente
+    b = b + 3; //aritmética de endereços -> salta 3 para a frente
 
     c = a;
-    c = a + 3;
+    c = c + 3;
 
     s = sum (b,10);
 
