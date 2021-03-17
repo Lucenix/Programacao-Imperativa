@@ -12,51 +12,42 @@ float multInt1(int n, float m) {
     return r;
 }
 
-float multInt2(int n, float m) {
+float multInt2(int n, float m, int *count) {
+    *count = 0;
     float r = 0;
-    int conta = 0;
-    do {
+    while (n) {
         if (n%2)
             r += m;
         n/=2;
         m*=2;
-        conta++;
-    }while(n>=1);
-    printf("%d\n", conta);
+        (*count)++;
+    }
     return r;
 }
 
+void mdcTest (int a,int b,int *r) {
+    for (int i = b; i>=1 && *r == 1; i--)
+        if (a%i == 0 && b%i == 0)
+            *r = i;
+}
+
 int mdc1 (int a, int b) {
-    if (a>b) {
-        for (int i = a; i>=1; i--) {
-            if (b%i || a%i)
-                continue;
-            else
-                return i;
-        }
-    } else {
-        for (int i = b; i>=1; i--) {
-            if (b%i || a%i)
-                continue;
-            else
-                return i;
-        }
-    }
+    int r = 1;
+    if (a>b)
+        mdcTest(a,b,&r);
+    else
+        mdcTest(b,a,&r);
+    return r;
 }
 
 int mdc2 (int a, int b) {
-
-    if(!(a*b))
-        return a+b;
-
-    while(a!=b) {
-        if (a > b) {
-            a-=b;
-        }else{
-            b-=a;
+    while (a && b) {
+        if (a > b)
+            a -= b;
+        else
+            b -= a;
         }
-    }
-    return a;
+    return (a+b);
 }
 
 int mdc3(int a, int b) {
@@ -87,8 +78,6 @@ int fib2 (int n) {
 }
 
 int fib1 (int n){
-    if (!n)
-        return 0;
     if (n<2)
         return 1;
     else{
@@ -98,12 +87,13 @@ int fib1 (int n){
 
 int main() {
     //printf("%f\n", multInt1(81,423));
-    //printf("%f\n", multInt2(81, 423));
-    //printf("%d\n", mdc1(30,25));
+    //printf("%f\n", multInt2(81, 423,&c));
+    //printf("%d\n", mdc1(12,9));
     //printf("%d\n", mdc2(1000,992));
     //printf("%d\n", mdc2(1000,992));
-    printf("%d\n", fib1(2));
-    printf("%d\n", fib1(3));
-    printf("%d\n", fib1(10));
+    //printf("%d\n", fib1(2));
+    //printf("%d\n", fib1(3));
+    //printf("%d\n", fib1(10));
+    //printf("%d\n", c);
     return 0;
 }
