@@ -48,13 +48,8 @@ void swap(int v[], int i, int j) {
 }
 
 int soma (int v[], int N) {
-    int *x = v,
-        soma = 0;
-    while (N) {
-        soma += *x;
-        x++;
-        N--;
-    }
+    int soma = 0;
+    for (int i = 0; i<N; v[++i])
     return soma;
 }
 
@@ -76,11 +71,9 @@ int maximum(int v[], int N, int *m) {
         result = -1;
     else {
         int r = v[0];
-        for (int i = 1; i<N; i++) {
-            if (v[i] > r)
-                r = v[i];
-        }
-        *m = r;
+        while(N)
+            if(*m<v[--N])
+                *m = r;
         result = 0;
     }
     return result;
@@ -88,8 +81,9 @@ int maximum(int v[], int N, int *m) {
 
 void quadrados(int q[], int N) {
     q[0] = 0;
-    for (int i = 1; i<N; i++) {
-        q[i] = q[i-1] + 2+i + 1;
+    int imp = 1;
+    for (int i = 1; i<N; i++, imp+=2) {
+        q[i] = q[i-1] + imp;
     }
 }
 

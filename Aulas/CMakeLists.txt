@@ -4,4 +4,4 @@ project(Aulas C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(Aulas
-        aula8.c)
+        aula9.c)
