@@ -109,11 +109,3 @@ int partition(int v[], int N, int x) {
         }
     }
 }
-
-int main () {
-    char s[100] = "Esta e uma string com duplicados";
-    printf("%s\n", s);
-    duplicaVogais(s);
-    printf("%s\n",s);
-    return 0;
-}

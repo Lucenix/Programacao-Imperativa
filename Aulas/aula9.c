@@ -4,6 +4,8 @@
 
 //ordenar arrays
 
+#include <stdio.h>
+
 void swap(int v[], int i, int j) {
     int z = v[i];
     v[i] = v[j];
@@ -47,12 +49,35 @@ void selSort (int v[],int N) {
 }
 
 void bubbleSort (int v[], int N) {
-    int i,j;
-    for (j=N-1;j>0; j--)
-        for (i=0; i<j;i++)
-            if (v[i]>v[i+1]) swap (v,i,i+1);
+    int i,j, ord=0;
+    for (j=N-1;j>0; j--) {
+        for (i=0; i<j; i++)
+            if (v[i]>v[i+1]) {swap (v,i,i+1); ord = i;}
+        j=ord+1;
+    }
 }
 
-int main() {
+void insere (int v[], int N, int x) {
+    int j;
+    for (j = N-1; j>=0 && v[j] > x; j--) {
+        v[j+1] = v[j];
+    }
+    v[j] = x;
+}
 
+void insSort(int v[], int N) {
+    int i=0;
+    while (i<N) {
+        insere (v,i,v[i]);
+        i++;
+    }
+}
+
+
+
+int main() {
+    int v[10] = {3,4,1,2,8,0,7,5,5,4};
+    bubbleSort(v,10);
+    for (int i = 0; i<10; i++)
+        printf("%d", v[i]);
 }
