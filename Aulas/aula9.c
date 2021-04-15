@@ -73,11 +73,53 @@ void insSort(int v[], int N) {
     }
 }
 
+void merge(int a[], int na, int b[], int nb, int v[]) {
+    int i=0, j=0;
+    while (i<na && j<nb) {
+        if (a[i] < b[j]) v[i+j] = a[i++];
+        else v[i+j] = b[j++];
+    }
+    while (i<na) {
+        v[i+j] = a[i++];
+    }
+    while (j<nb) {
+        v[i+j] = b[j++];
+    }
+}
 
+void mergeSort(int v[], int N) {
+    int m, i;
+    int aux[N];
+    if (N>1) {
+        m = N/2;
+        mergeSort(v, m);
+        mergeSort(v+m,N-m);
+        merge(v,m,v+m, N-m, aux);
+        for (i = 0; i<N; i++) v[i] = aux[i];
+    }
+}
+
+int partition(int v[],int N) {
+    int r, i;
+    for (i = r = 0; i < N-1; i++)
+        if (v[i] <= v[N-1])
+            swap(v, r++, i);
+    swap(v, r, N-1);
+    return r;
+}
+
+void qSort(int v[], int N) {
+    int p;
+    if (N>1) {
+        p = partition(v,N);
+        qSort(v,p);
+        qSort(v+p+1,N-p-1);
+    }
+}
 
 int main() {
     int v[10] = {3,4,1,2,8,0,7,5,5,4};
-    bubbleSort(v,10);
-    for (int i = 0; i<10; i++)
-        printf("%d", v[i]);
+    qSort(v,10);
+    for (int i = 0; i<10;i++)
+        printf("%d ", v[i]);
 }
