@@ -229,6 +229,132 @@ int sufPref (char s1[], char s2[]) {
     return j;
 }
 
+int contaPal (char s[]) {
+    int r = 0;
+    while (*s != '\0') {
+        while (*s != '\0' && *s!=' ')
+            s++;
+        while (*s == ' ')
+            s++;
+        r++;
+    }
+    return r;
+}
+
+int contaVogais (char s[]) {
+    int r = 0;
+    while (*s != '\0') {
+        if (*s == 'a' || *s == 'e' || *s == 'i' || *s == 'o' || *s == 'u' ||
+            *s == 'A' || *s == 'E' || *s == 'I' || *s == 'O' || *s == 'U')
+            r++;
+    }
+    return r;
+}
+
+int contida (char a[], char b[]) {
+    int r = 1;
+    while (*a != '\0' && *b != '\0') {
+        if (*a == *b)
+            ++b;
+        ++a;
+    }
+    if (*b != '\0')
+        r = 0;
+    return r;
+}
+
+int palindrome (char s[]) {
+    int i;
+    long len = strlen(s);
+    for (i = 0; len > i && s[i] == s[len]; i++, len--)
+        ;
+    if (len < i)
+        len = 1;
+    else
+        len = 0;
+    return len;
+}
+
+int remRep (char x[]) {
+    int w = 0, r = 0;
+    while (x[r] != '\0') {
+        char temp = x[r++];
+        while (x[r] == temp)
+            r++;
+        x[w++] = temp;
+    }
+    x[w] = '\0';
+    return w;
+}
+
+int limpaEspacos (char t[]) {
+    int w, r;
+    for (r = 0; t[r] != '\0' && t[r] != ' '; r++)
+        ;
+    for (w = r; t[r] != '\0'; w++) {
+        char temp = t[r];
+        //o r++ não pode aparecer no incremento porque se não avança um a mais
+        //desta maneira v sei que ele avança sempre pelo menos uma vez ao fazer o teste
+        while (t[r++] == ' ');
+        t[w] = temp;
+    }
+    t[w] = '\0';
+    return w;
+}
+
+void insere (int v[], int N, int x) {
+    for (N; N >= 0 && v[N] > x; N--) {
+        v[N+1] = v[N];
+    }
+    v[N+1] = x;
+}
+
+void merge (int r[], int a[], int b[], int na, int nb) {
+    int i = 0, j = 0;
+    while (i < na && j < nb) {
+        if (a[i] < b [j])
+            r[i+j] = a[i++];
+        else
+            r[i+j] = b[j++];
+    }
+    while (i < na)
+        r[i+j] = a[i++];
+    while (j < nb)
+        r[i+j] = b[j++];
+}
+
+int crescente (int a[], int i, int j) {
+    int r = 1;
+    while (r && i < j) {
+        if (a[i] > a[i+1])
+            r = 0;
+        i++;
+    }
+    return r;
+}
+
+int retiraNeg (int v[], int N) {
+    int r, w;
+    for (r = 0, w = 0; r < N; r++) {
+        if (v[r] >= 0)
+            v[w++] = v[r];
+    }
+    return w;
+}
+
+int menosFeq (int v[], int N) {
+    int i, conta, min, acc, r;
+    for (i = 0, min = 0; i < N; i++) {
+        acc = v[i];
+        for (conta = -1; i<N && v[i] == acc; i++, conta++);
+        if (conta < min) {
+            min = conta;
+            r = acc;
+        }
+    }
+    return r;
+}
+
 int elimRepOrd (int v[], int n) {
     int r, w;
     for (r = 0, w = -1; r < n; r++) {

@@ -3,4 +3,4 @@ project(Aulas C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Aulas aula11.c)
+add_executable(Aulas teste.c)
